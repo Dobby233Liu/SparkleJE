@@ -1,21 +1,19 @@
 {
-  "name": "electron-quick-start",
+  "name": "SparkleJE",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "An JSON Editor",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://github.com/Dobby233Liu/SparkleJE",
   "keywords": [
     "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "JSON",
+	"editor"
   ],
-  "author": "GitHub",
-  "license": "CC0-1.0",
+  "author": "Dobby233Liu",
+  "license": "MIT",
   "devDependencies": {
     "electron": "^7.1.3"
   }
