@@ -6,11 +6,34 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <title>Hello World!</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@latest/normalize.min.css">
 	<link rel="stylesheet" href="main.css">
+	<!-- properly load tb-button backgrounds -->
+	<link rel="preload" href="ui/close.png" as="image">
+	<link rel="preload" href="ui/close_hover.png" as="image">
+	<link rel="preload" href="ui/max.png" as="image">
+	<link rel="preload" href="ui/max_hover.png" as="image">
+	<link rel="preload" href="ui/unmax.png" as="image">
+	<link rel="preload" href="ui/unmax_hover.png" as="image">
+	<link rel="preload" href="ui/min.png" as="image">
+	<link rel="preload" href="ui/min_hover.png" as="image">
   </head>
   <body>
 	<div id="main">
-		<div id="title-bar"></div>
+		<div id="title-bar">
+			<div id="tb-title-text-region">
+				SparkleJE
+			</div>
+			<div id="tb-button-region">
+				<ul id="tb-button-list">
+					<li><button class="tb-button" id="tb-button-min" alt="Minimize"></button></li>
+					<li><div class="tb-spacer-10">  </div><li>
+					<li><button class="tb-button" id="tb-button-max" alt="Maximize"></button></li>
+					<li><div class="tb-spacer-10">  </div><li>
+					<li><button class="tb-button" id="tb-button-close" alt="Close"></button></li>
+				</ul>
+			</div>
+		</div>
 		<div id="content">
 			<h1>Hello World!</h1>
 		</div>

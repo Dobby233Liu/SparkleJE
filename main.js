@@ -16,8 +16,7 @@ function createWindow () {
     },
 	show: false,
 	frame: false,
-	titleBarStyle: 'hidden',
-	transparent: true
+	titleBarStyle: 'hidden'
   })
 
   // and load the index.html of the app.
