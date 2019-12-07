@@ -5,14 +5,23 @@ const path = require('path')
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
+let openFilePath = false;
 
 function createWindow () {
   // Create the browser window.
+  if (process.platform == 'win32') try {
+    openFilePath = process.argv[0];
+  } catch {}
   mainWindow = new BrowserWindow({
     width: 1200,
     height: 800,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
+      preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: true,
+      nodeIntegrationInWorker: true,
+      nodeIntegrationInSubFrames: true,
+      enableRemoteModule: true,
+      defaultEncoding: "UTF-8"
     },
 	show: false,
 	frame: false,
@@ -21,6 +30,7 @@ function createWindow () {
 
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
+  // mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
@@ -31,9 +41,15 @@ function createWindow () {
   })
   
   mainWindow.once('ready-to-show', () => {
-	mainWindow.show()
+    mainWindow.show()
+    if (openFilePath) mainWindow.webContents.executeJavaScript('openFile("'+openFilePath.replace('\\', '\\\\')+'")')
   })
 }
+
+app.on('open-file', (event, path) => {
+  event.preventDefault()
+  openFilePath = path
+})
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.

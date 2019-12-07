@@ -3,11 +3,12 @@
   <head>
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <title>Hello World!</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src *">
+    <title>SparkleJE</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@latest/normalize.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/jquery@latest"></script>
 	<link rel="stylesheet" href="main.css">
+	<script src="renderer.js"></script>
 	<!-- properly load tb-button backgrounds -->
 	<link rel="preload" href="ui/close.png" as="image">
 	<link rel="preload" href="ui/close_hover.png" as="image">
@@ -26,16 +27,16 @@
 			</div>
 			<div id="tb-button-region">
 				<ul id="tb-button-list">
-					<li><button class="tb-button" id="tb-button-min" alt="Minimize"></button></li>
+					<li><button class="tb-button" id="tb-button-min" alt="Minimize" title="Minimize"></button></li>
 					<li><div class="tb-spacer-10">  </div><li>
-					<li><button class="tb-button" id="tb-button-max" alt="Maximize"></button></li>
+					<li><button class="tb-button" id="tb-button-max" alt="Maximize" title="Maximize"></button></li>
 					<li><div class="tb-spacer-10">  </div><li>
-					<li><button class="tb-button" id="tb-button-close" alt="Close"></button></li>
+					<li><button class="tb-button" id="tb-button-close" alt="Close" title="Close"></button></li>
 				</ul>
 			</div>
 		</div>
 		<div id="content">
-			<h1>Hello World!</h1>
+			(Something is done at least now.)
 		</div>
 	</div>
   </body>
