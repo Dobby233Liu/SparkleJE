@@ -30,7 +30,7 @@ function createWindow () {
 
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
-  // mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
@@ -42,7 +42,7 @@ function createWindow () {
   
   mainWindow.once('ready-to-show', () => {
     mainWindow.show()
-    if (openFilePath) mainWindow.webContents.executeJavaScript('openFile("'+openFilePath.replace('\\', '\\\\')+'")')
+    if (openFilePath) mainWindow.webContents.executeJavaScript('openFile("'+openFilePath.replace(new RegExp("\\\\", "gm"), '\\\\').replace(new RegExp("\\\"", "gm"), '\\\"')+'")')
   })
 }
 

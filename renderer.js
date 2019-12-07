@@ -1,4 +1,9 @@
 // index.html js
+window.titleChanged = (event) => {
+    window.titleF = event;
+    document.getElementById("tb-title-text-region").innerHTML = event;
+}
+window.JSONEditor = window.jeNPM = require("@json-editor/json-editor")
 function empty(v) {
     let type = typeof v;
     if (type === 'undefined') {
@@ -52,7 +57,7 @@ function openFile (path/**String*/) { // FIXME: should not just return when erro
         }
     } catch { 
         errorsReturn = true;
-        window.openErrorCause = "can't confirm if path is undefined or null or empty because the editor catch errors from JavaScript engine"
+        window.openErrorCause = "can't confirm if path is undefined or null or empty because the editor catch errors from JavaScript engine (possibliy the path wasn't string)"
     }
     if (errorsReturn) return;
 } // TODO
@@ -71,11 +76,27 @@ let unmaxCB = (e)=>{
     document.querySelector("#tb-button-max").title="Maximize";
     document.querySelector("#tb-button-max").onclick = maxCB
 }
-window.titleChanged = (event) => {
-    window.titleF = event;
-    document.getElementById("tb-title-text-region").innerHTML = event;
-}
 window.onload = (e)=>{
+    window.wygiwysEditor = CodeMirror.fromTextArea(document.getElementById("jeditor-wygiwys-right"), {
+        lineNumbers: true,
+        mode: {name: "javascript", json: true}
+    });
+    let heightMain = parseInt(getComputedStyle(document.body).height.replace("px", ""));
+    let heightTB = parseInt(getComputedStyle(document.querySelector("#title-bar")).height.replace("px", ""));
+    let outerH = heightMain - heightTB;
+    console.log("resizing rt", heightMain, heightTB, outerH)
+    document.querySelector("#content").style.height = outerH + "px";
+    document.querySelectorAll(".jeditor-box")[0].style.height = outerH + "px";
+    window.wygiwysEditor.setSize(null, outerH);
+    console.log("resized", document.querySelector("#content"), document.querySelectorAll(".jeditor-box")[0], window.wygiwysEditor)
+    setInterval(() => {
+        let heightMain = parseInt(getComputedStyle(document.body).height.replace("px", ""));
+        let heightTB = parseInt(getComputedStyle(document.querySelector("#title-bar")).height.replace("px", ""));
+        let outerH = heightMain - heightTB;
+        document.querySelector("#content").style.height = outerH + "px";
+        document.querySelectorAll(".jeditor-box")[0].style.height = outerH + "px";
+        window.wygiwysEditor.setSize(null, outerH);
+    }, 1)
     document.querySelector("#tb-button-min").onclick = (e)=>{
         window.bwindow.minimize();
     }

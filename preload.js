@@ -4,7 +4,7 @@ const { app, dialog, remote } = require('electron')
 const bwindow = window.bwindow = remote.getCurrentWindow()
 appRoot = window.appRoot = __dirname
 bwindow.on('page-title-updated', function(event, title){
-    bwindow.webContents.executeJavaScript("window.titleChanged(\""+title.replace('\\', '\\\\')+"\")");
+    bwindow.webContents.executeJavaScript("window.titleChanged(\""+title.replace(new RegExp("\\\\", "gm"), '\\\\').replace(new RegExp("\\\"", "gm"), '\\\"')+"\")");
 })
 exports.selectJSONFile = () => {
     return dialog.showOpenDialogSync(bwindow, {
