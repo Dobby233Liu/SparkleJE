@@ -3,7 +3,7 @@ window.titleChanged = (event) => {
     window.titleF = event;
     document.getElementById("tb-title-text-region").innerHTML = event;
 }
-window.JSONEditor = window.jeNPM = require("@json-editor/json-editor")
+window.jsonQ = require('electron').remote.require("jsonq")
 function empty(v) {
     let type = typeof v;
     if (type === 'undefined') {

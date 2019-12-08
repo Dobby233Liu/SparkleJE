@@ -11,11 +11,13 @@ body, html {
 	display: flex;
 	flex-flow: row wrap;
 	align-content: stretch;
+	height: calc(100% - 32px);
 }
 .jeditor-box .jeditor-box-child {
 	width: 50%;
 	margin: auto;  /* Magic! */
 	overflow: visible;
+	height: 100%;
 }
 .jeditor-box #jeditor-wygiwys-left-cont {
 	order: 1;
