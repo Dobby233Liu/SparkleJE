@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "codemirror": "^5.49.2",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "jsonq": "^1.2.0",
     "normalize.css": "^8.0.1"
   }
