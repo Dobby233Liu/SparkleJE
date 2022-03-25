@@ -15,7 +15,7 @@
   "author": "Dobby233Liu",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^9.4.0"
+    "electron": "^13.6.6"
   },
   "dependencies": {
     "codemirror": "^5.49.2",
